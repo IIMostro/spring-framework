@@ -294,8 +294,14 @@ configure(allprojects) { project ->
 			// maven { url "https://repo.spring.io/libs-spring-framework-build" }
 			mavenLocal()
 			//https://maven.aliyun.com/repository/spring
+			//https://maven.aliyun.com/repository/google
+			//https://maven.aliyun.com/repository/apache-snapshots
+			//https://repo1.maven.org/maven2
+			maven { url 'https://repo1.maven.org/maven2' }
+			maven { url 'https://maven.aliyun.com/repository/google' }
 			maven { url 'https://maven.aliyun.com/repository/spring' }
 			maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+			maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
 		}
 	}
 	configurations.all {

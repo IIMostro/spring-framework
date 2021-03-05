@@ -3,6 +3,7 @@ pluginManagement {
 		// gradlePluginPortal()
 		// maven { url 'https://repo.spring.io/plugins-release' }
 		// https://maven.aliyun.com/repository/gradle-plugin
+		maven { url 'https://repo1.maven.org/maven2' }
 		maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
 		maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
 	}
@@ -65,3 +66,5 @@ settings.gradle.projectsLoaded {
 		}
 	}
 }
+include 'spring-start-hello'
+
