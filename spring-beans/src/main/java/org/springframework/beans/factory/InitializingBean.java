@@ -40,6 +40,10 @@ public interface InitializingBean {
 	 * configuration and final initialization when all bean properties have been set.
 	 * @throws Exception in the event of misconfiguration (such as failure to set an
 	 * essential property) or if initialization fails for any other reason
+	 *
+	 *
+	 * 由 BeanFactory 设置完所有属性后需要作出反应的bean所实现的接口：执行自定义初始化，或仅检查是否已设置所有必填属性。
+	 * 实现InitializingBean的替代方法是指定自定义 init-method，例如在XML bean定义中。
 	 */
 	void afterPropertiesSet() throws Exception;
 

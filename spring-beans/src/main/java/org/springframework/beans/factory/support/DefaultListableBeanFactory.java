@@ -915,13 +915,19 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
 		// Iterate over a copy to allow for init methods which in turn register new bean definitions.
 		// While this may not be part of the regular factory bootstrap, it does otherwise work fine.
+		// 拿到了所有的Bean定义信息，这些信息已经在前面的步骤中都准备完毕了
 		List<String> beanNames = new ArrayList<>(this.beanDefinitionNames);
 
 		// Trigger initialization of all non-lazy singleton beans...
+		// 这里面有一些Bean已经在之前的步骤中已经创建过了，这里只创建剩余的那些非延迟加载的单例Bean
 		for (String beanName : beanNames) {
+			// 合并父BeanFactory中同名的BeanDefinition，
 			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName);
+			// 这个Bean不是抽象Bean、是单例Bean、是非延迟加载的Bean
 			if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
+				// 判断是不是工厂bean, 如果是工厂bean还需要实现beanFactory
 				if (isFactoryBean(beanName)) {
+					//如果是工厂bean,判断是不是需要急切加载，如果需要，则直接实例化该工厂
 					Object bean = getBean(FACTORY_BEAN_PREFIX + beanName);
 					if (bean instanceof FactoryBean) {
 						FactoryBean<?> factory = (FactoryBean<?>) bean;
@@ -940,13 +946,17 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 						}
 					}
 				}
+				//如果不是工厂bean, 则直接调用getBean
 				else {
+					// 核心中的核心
 					getBean(beanName);
 				}
 			}
 		}
 
 		// Trigger post-initialization callback for all applicable beans...
+		// 这里所有非延时加载的bean都创建好了。
+		// 如果Bean实现了SmartInitializingSingleton还会回调afterSingletonsInstantiated方法
 		for (String beanName : beanNames) {
 			Object singletonInstance = getSingleton(beanName);
 			if (singletonInstance instanceof SmartInitializingSingleton) {

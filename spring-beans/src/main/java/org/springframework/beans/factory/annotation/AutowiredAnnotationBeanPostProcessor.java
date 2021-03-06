@@ -118,6 +118,16 @@ import org.springframework.util.StringUtils;
  * version of {@code getBean(Class, args)} and {@code getBean(String, args)}.
  * See {@link Lookup @Lookup's javadoc} for details.
  *
+ * BeanPostProcessor 的实现，可自动连接带注解的字段，setter方法和任意config方法。
+ * 通过Java 5注释检测要注入的此类成员：默认情况下，Spring的 @Autowired 和 @Value 注解。 还支持JSR-330的 @Inject 注解（如果可用），
+ * 以替代Spring自己的 @Autowired 。 任何给定bean类的构造器（最大）只能使用 "required" 参数设置为true来声明此批注，
+ * 指示在用作Spring bean时要自动装配的构造器。如果多个不需要的构造函数声明了注释，则它们将被视为自动装配的候选对象。
+ * 将选择通过匹配Spring容器中的bean可以满足的依赖关系数量最多的构造函数。如果没有一个候选者满意，则将使用主/默认构造函数（如果存在）。
+ * 如果一个类仅声明一个单一的构造函数开始，即使没有注释，也将始终使用它。带注解的构造函数不必是public的。
+ * 在构造任何bean之后，调用任何配置方法之前，立即注入字段。这样的配置字段不必是public的。
+ * Config方法可以具有任意名称和任意数量的参数。这些参数中的每个参数都将与Spring容器中的匹配bean自动连接。
+ * Bean属性设置器方法实际上只是这种常规config方法的特例。 Config方法不必是public的。
+ *
  * @author Juergen Hoeller
  * @author Mark Fisher
  * @author Stephane Nicoll
@@ -443,6 +453,7 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 		// Fall back to class name as cache key, for backwards compatibility with custom callers.
 		String cacheKey = (StringUtils.hasLength(beanName) ? beanName : clazz.getName());
 		// Quick check on the concurrent map first, with minimal locking.
+		// 首先从缓存中取，如果没有才创建
 		InjectionMetadata metadata = this.injectionMetadataCache.get(cacheKey);
 		if (InjectionMetadata.needsRefresh(metadata, clazz)) {
 			synchronized (this.injectionMetadataCache) {
@@ -451,7 +462,9 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 					if (metadata != null) {
 						metadata.clear(pvs);
 					}
+					// 构建自动装配的信息
 					metadata = buildAutowiringMetadata(clazz);
+					// 放入缓存
 					this.injectionMetadataCache.put(cacheKey, metadata);
 				}
 			}
@@ -467,9 +480,11 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 		List<InjectionMetadata.InjectedElement> elements = new ArrayList<>();
 		Class<?> targetClass = clazz;
 
+		// 循环获取父类信息
 		do {
 			final List<InjectionMetadata.InjectedElement> currElements = new ArrayList<>();
 
+			// 循环获取类上的属性，并判断是否有@Autowired等注入类注解
 			ReflectionUtils.doWithLocalFields(targetClass, field -> {
 				MergedAnnotation<?> ann = findAutowiredAnnotation(field);
 				if (ann != null) {
@@ -484,6 +499,7 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 				}
 			});
 
+			// 循环获取类上的方法，并判断是否有需要依赖的项
 			ReflectionUtils.doWithLocalMethods(targetClass, method -> {
 				Method bridgedMethod = BridgeMethodResolver.findBridgedMethod(method);
 				if (!BridgeMethodResolver.isVisibilityBridgeMethodPair(method, bridgedMethod)) {

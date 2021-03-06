@@ -59,6 +59,16 @@ import org.springframework.util.StringValueResolver;
  * @see org.springframework.context.MessageSourceAware
  * @see org.springframework.context.ApplicationContextAware
  * @see org.springframework.context.support.AbstractApplicationContext#refresh()
+ *
+ *
+ * BeanPostProcessor 实现，它将 ApplicationContext 传递给实现
+ * EnvironmentAware，
+ * EmbeddedValueResolverAware，
+ * ResourceLoaderAware，
+ * ApplicationEventPublisherAware，
+ * MessageSourceAware 和/或 ApplicationContextAware 接口的bean。
+ * 按照上面提到的顺序满足已实现的接口。
+ * IOC容器将自动在其基础bean工厂中注册它。应用程序不直接使用它。
  */
 class ApplicationContextAwareProcessor implements BeanPostProcessor {
 
@@ -124,6 +134,7 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 		if (bean instanceof ApplicationStartupAware) {
 			((ApplicationStartupAware) bean).setApplicationStartup(this.applicationContext.getApplicationStartup());
 		}
+		// 此处就是如果bean实现了ApplicationContextAware就会将applicationContext设值进入bean的地方
 		if (bean instanceof ApplicationContextAware) {
 			((ApplicationContextAware) bean).setApplicationContext(this.applicationContext);
 		}

@@ -69,6 +69,11 @@ public interface BeanPostProcessor {
 	 * if {@code null}, no subsequent BeanPostProcessors will be invoked
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet
+	 *
+	 *
+	 * 在任何bean初始化回调（例如 InitializingBean的afterPropertiesSet
+	 * 或 自定义init-method）之前，将此 BeanPostProcessor 应用于给定的新bean实例。
+	 * 该bean将已经用属性值填充。返回的bean实例可能是原始实例的包装。
 	 */
 	@Nullable
 	default Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -95,6 +100,11 @@ public interface BeanPostProcessor {
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet
 	 * @see org.springframework.beans.factory.FactoryBean
+	 *
+	 *
+	 * 在任何bean初始化回调（例如InitializingBean的afterPropertiesSet 或
+	 * 自定义init-method）之后，将此 BeanPostProcessor 应用于给定的新bean实例。
+	 * 该bean将已经用属性值填充。返回的bean实例可能是原始实例的包装。
 	 */
 	@Nullable
 	default Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {

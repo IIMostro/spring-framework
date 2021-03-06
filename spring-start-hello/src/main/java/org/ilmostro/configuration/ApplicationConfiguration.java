@@ -1,5 +1,7 @@
 package org.ilmostro.configuration;
 
+import org.ilmostro.service.UserService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,4 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("org.ilmostro")
 public class ApplicationConfiguration {
+
+
+	@Bean
+	public UserService userService(){
+		return new UserService();
+	}
 }
