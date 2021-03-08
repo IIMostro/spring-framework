@@ -1,6 +1,6 @@
 package org.ilmostro.configuration;
 
-import org.ilmostro.service.UserService;
+import org.ilmostro.service.circular.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
