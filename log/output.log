@@ -1,0 +1,212 @@
+09:56:16.884 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+09:56:16.888 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+09:56:16.889 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+09:56:16.889 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:03:46.264 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:03:46.267 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:03:46.267 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:03:46.267 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:33:59.562 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:33:59.565 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:33:59.566 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:33:59.566 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:46:06.733 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:46:06.736 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:46:06.736 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:46:06.736 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:47:20.509 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:47:20.524 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:47:20.524 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:47:20.525 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:52:49.986 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:52:50.000 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:52:50.001 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:52:50.001 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:54:06.291 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:54:06.294 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:54:06.294 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:54:06.294 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+10:56:28.496 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:56:28.510 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+10:56:28.511 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+10:56:28.512 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:03:00.768 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:03:00.771 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:03:00.772 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:03:00.772 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:04:10.722 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:04:10.738 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:04:10.738 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:04:10.739 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:04:57.901 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:04:57.915 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:04:57.916 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:04:57.916 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:06:43.971 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:06:43.974 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:06:43.974 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:06:43.974 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:11:37.292 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:11:37.297 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:11:37.297 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:11:37.297 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:15:10.043 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:15:10.047 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:15:10.047 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:15:10.047 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:25:08.762 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:25:08.773 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:25:08.773 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:25:08.773 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:32:38.188 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:32:38.193 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:32:38.194 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:32:38.195 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+13:36:39.533 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+13:36:39.537 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+13:36:39.537 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+13:36:39.537 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+13:48:29.805 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+13:48:29.808 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+13:48:29.808 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+13:48:29.808 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+13:50:34.988 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+13:50:34.992 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+13:50:34.992 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+13:50:34.992 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+13:52:51.569 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+13:52:51.578 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+13:52:51.578 [main] INFO  o.i.service.order.OrderService - this is order service post construct
+13:52:51.578 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+13:52:51.578 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+13:54:52.293 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+13:54:52.298 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+13:54:52.298 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+13:54:52.298 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+14:03:15.228 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+14:03:15.232 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+14:03:15.232 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+14:03:15.232 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+14:09:21.651 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+14:09:21.655 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+14:09:21.655 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+14:09:21.655 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+14:15:28.144 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+14:15:28.147 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+14:15:28.147 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+14:15:28.148 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+14:19:03.518 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+14:19:03.521 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+14:19:03.522 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+14:19:03.522 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+15:12:18.436 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:12:18.439 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+15:12:18.440 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+15:12:18.440 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+15:34:44.871 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:34:44.884 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+15:34:44.885 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+15:34:44.886 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+15:37:00.118 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:37:00.140 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+15:37:00.141 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+15:37:00.143 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+15:45:57.600 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:45:57.615 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+15:45:57.616 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+15:45:57.616 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:00:57.193 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:00:57.197 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+11:00:57.197 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:00:57.197 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:00:57.197 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:01:26.589 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:01:26.592 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+11:01:26.592 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessBeforeInitialization!
+11:01:26.592 [main] INFO  o.i.service.order.OrderService - this is order service initializing bean after properties set function!
+11:01:26.592 [main] INFO  o.i.s.order.OrderServiceProcess - this is bean post processor postProcessAfterInitialization!
+11:03:29.711 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:03:29.715 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+11:03:29.715 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+11:03:29.716 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+11:03:29.717 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+11:16:18.632 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+11:16:18.646 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+11:16:18.647 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+11:16:18.647 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+11:16:18.649 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+12:13:49.668 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+12:13:50.844 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+12:13:50.845 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+12:13:50.846 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+12:13:50.847 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:04:23.483 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:04:23.830 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:04:23.830 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:04:23.830 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:04:23.831 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:06:36.353 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:06:36.357 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:06:36.357 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:06:36.357 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:06:36.357 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:07:14.426 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:07:14.503 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:07:14.504 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:07:14.504 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:07:14.504 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:25:32.760 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:25:33.110 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:25:33.112 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:25:33.112 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:25:33.112 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:30:11.432 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:30:11.542 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:30:11.542 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:30:11.543 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:30:11.543 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:39:02.110 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:39:02.114 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:39:02.114 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:39:02.115 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:39:02.115 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:39:45.213 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:39:45.216 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:39:45.216 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:39:45.216 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:39:45.217 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:51:03.474 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:51:03.488 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:51:03.488 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:51:03.489 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:51:03.489 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+15:52:52.845 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+15:52:52.849 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+15:52:52.849 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+15:52:52.849 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+15:52:52.849 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+16:03:39.326 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+16:03:39.329 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+16:03:39.329 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+16:03:39.330 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+16:03:39.330 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+16:13:38.971 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+16:13:38.976 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+16:13:38.976 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+16:13:38.976 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+16:13:38.977 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+16:15:40.269 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+16:15:40.273 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+16:15:40.273 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+16:15:40.273 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+16:15:40.274 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+16:31:22.912 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+16:31:35.174 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+16:31:35.175 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+16:31:35.175 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+16:31:35.175 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+16:39:32.650 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+16:39:32.653 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+16:39:32.654 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+16:39:32.654 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+16:39:32.655 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
