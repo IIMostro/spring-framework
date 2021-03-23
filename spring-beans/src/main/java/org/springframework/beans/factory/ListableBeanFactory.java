@@ -48,6 +48,7 @@ import org.springframework.lang.Nullable;
  * <p><b>NOTE:</b> With the exception of {@code getBeanDefinitionCount}
  * and {@code containsBeanDefinition}, the methods in this interface
  * are not designed for frequent invocation. Implementations may be slow.
+ * 通过列表的方式管理bean
  *
  * @author Rod Johnson
  * @author Juergen Hoeller

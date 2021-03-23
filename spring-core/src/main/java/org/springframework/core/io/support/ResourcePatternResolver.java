@@ -45,7 +45,7 @@ import org.springframework.core.io.ResourceLoader;
  * expected to be a path without placeholders in this case (e.g. "/beans.xml");
  * JAR files or different directories in the class path can contain multiple files
  * of the same name.
- *
+ *	加载资源文件的接口
  * @author Juergen Hoeller
  * @since 1.0.2
  * @see org.springframework.core.io.Resource

@@ -88,6 +88,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * {@link Configuration @Configuration} classes
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... componentClasses) {
+		//new DefaultListableBeanFactory() 创建一个BeanFactory
 		this();
 		register(componentClasses);
 		refresh();

@@ -151,6 +151,7 @@ public class DefaultResourceLoader implements ResourceLoader {
 			}
 		}
 
+		//如果传入的location是/开头的则构造ClassPathContextResource
 		if (location.startsWith("/")) {
 			return getResourceByPath(location);
 		}

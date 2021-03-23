@@ -40,6 +40,8 @@ package org.springframework.context;
  * {@link SmartLifecycle} interface provides sophisticated integration with the
  * application context's startup and shutdown phases.
  *
+ * 管理ioc的生命周期
+ *
  * @author Juergen Hoeller
  * @since 2.0
  * @see SmartLifecycle
