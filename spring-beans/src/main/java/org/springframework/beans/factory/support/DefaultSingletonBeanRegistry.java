@@ -170,6 +170,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	@Override
 	@Nullable
 	public Object getSingleton(String beanName) {
+		//允许立即加载
 		return getSingleton(beanName, true);
 	}
 
@@ -184,6 +185,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	@Nullable
 	protected Object getSingleton(String beanName, boolean allowEarlyReference) {
 		// Quick check for existing instance without full singleton lock
+		//尝试从一级缓存里面获取完整的bean实例
 		Object singletonObject = this.singletonObjects.get(beanName);
 
 		//单例的bean为空，并且这个bean是正在创建的, 在循环依赖中isSingletonCurrentlyInCreation会为true

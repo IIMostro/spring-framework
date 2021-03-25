@@ -359,7 +359,6 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 			processConfig.tag("classCount", () -> String.valueOf(configClasses.size())).end();
 
 			candidates.clear();
-			// 5.2.5 加载配置类中的被@Bean标注的组件
 			if (registry.getBeanDefinitionCount() > candidateNames.length) {
 				String[] newCandidateNames = registry.getBeanDefinitionNames();
 				Set<String> oldCandidateNames = new HashSet<>(Arrays.asList(candidateNames));

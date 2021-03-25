@@ -560,7 +560,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
-				// 4. 准备BeanFactory完成后进行的后置处理
+				// 4. 准备BeanFactory完成后进行的后置处理,钩子方法
 				postProcessBeanFactory(beanFactory);
 
 				StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
@@ -699,7 +699,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void prepareBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 		// Tell the internal bean factory to use the context's class loader etc.
-		// 设置BeanFactory的类加载器、表达式解析器等
+		// 设置BeanFactory的类加载器、表达式解析器等, 内部容器可以获取外部容器的资源
 		beanFactory.setBeanClassLoader(getClassLoader());
 		if (!shouldIgnoreSpel) {
 			beanFactory.setBeanExpressionResolver(new StandardBeanExpressionResolver(beanFactory.getBeanClassLoader()));
@@ -708,6 +708,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// Configure the bean factory with context callbacks.
 		// 3.1 配置一个可回调注入ApplicationContext的BeanPostProcessor
+		// 当Bean实现了ApplicationContextAware的时候会注入ApplicationContext
 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
 		//这几个ignoreDependencyInterface 意思就是不要自动装载
 		//例如OrderService实现了ApplicationContextAware,
@@ -936,6 +937,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// (such as a PropertySourcesPlaceholderConfigurer bean) registered any before:
 		// at this point, primarily for resolution in annotation attribute values.
 		// 嵌入式值解析器EmbeddedValueResolver的组件注册，它负责解析占位符和表达式
+		// @Value注解或者xml解析中的${}
 		if (!beanFactory.hasEmbeddedValueResolver()) {
 			beanFactory.addEmbeddedValueResolver(strVal -> getEnvironment().resolvePlaceholders(strVal));
 		}

@@ -921,7 +921,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		// Trigger initialization of all non-lazy singleton beans...
 		// 这里面有一些Bean已经在之前的步骤中已经创建过了，这里只创建剩余的那些非延迟加载的单例Bean
 		for (String beanName : beanNames) {
-			// 合并父BeanFactory中同名的BeanDefinition，
+			// 合并父BeanFactory中同名的BeanDefinition，兼容各种BeanDefinition
 			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName);
 			// 这个Bean不是抽象Bean、是单例Bean、是非延迟加载的Bean
 			if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
@@ -970,6 +970,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 					}, getAccessControlContext());
 				}
 				else {
+					// 将@EventListener的方法作为ApplicationListener对象监听发布
 					smartSingleton.afterSingletonsInstantiated();
 				}
 				smartInitialize.end();

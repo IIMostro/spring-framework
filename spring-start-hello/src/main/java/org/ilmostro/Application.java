@@ -2,6 +2,7 @@ package org.ilmostro;
 
 import org.ilmostro.configuration.ApplicationConfiguration;
 import org.ilmostro.service.order.OrderService;
+import org.ilmostro.entity.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -19,5 +20,6 @@ public class Application {
 		 */
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 		OrderService bean = applicationContext.getBean(OrderService.class);
+		User bean1 = applicationContext.getBean(User.class);
 	}
 }
