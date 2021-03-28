@@ -1368,6 +1368,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			Object instanceCandidate;
 
 			// 如果找到了，超过1个，会决定使用哪个Bean更合适，如果真的分辨不出来，则会抛出异常
+			// 这里需要依据@Primary @Priority
 			if (matchingBeans.size() > 1) {
 				autowiredBeanName = determineAutowireCandidate(matchingBeans, descriptor);
 				if (autowiredBeanName == null) {

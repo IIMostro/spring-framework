@@ -257,6 +257,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 		//循环依赖，二次获取
 		Object sharedInstance = getSingleton(beanName);
+		//如果getSingleton()获取不到bean
 		if (sharedInstance != null && args == null) {
 			if (logger.isTraceEnabled()) {
 				//如果bean还在创建，说明产生了循环依赖
@@ -290,6 +291,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				// 如果检查不存在，看看父容器有没有（Web环境会存在父子容器现象）
 				String nameToLookup = originalBeanName(name);
 				if (parentBeanFactory instanceof AbstractBeanFactory) {
+					//递归查询父容器
 					return ((AbstractBeanFactory) parentBeanFactory).doGetBean(
 							nameToLookup, requiredType, args, typeCheckOnly);
 				}
@@ -330,12 +332,17 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				String[] dependsOn = mbd.getDependsOn();
 				if (dependsOn != null) {
 					for (String dep : dependsOn) {
+
+						//如果spring显示的定义了循环依赖，则报错
 						if (isDependent(beanName, dep)) {
 							throw new BeanCreationException(mbd.getResourceDescription(), beanName,
 									"Circular depends-on relationship between '" + beanName + "' and '" + dep + "'");
 						}
+						//缓存依赖调用，注意传入的key是被依赖的beanName
 						registerDependentBean(dep, beanName);
 						try {
+							//递归调用getBean方法，注册Bean之间的依赖
+							//初始化依赖bean
 							getBean(dep);
 						}
 						catch (NoSuchBeanDefinitionException ex) {

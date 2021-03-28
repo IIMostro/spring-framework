@@ -68,6 +68,10 @@ public class InjectionMetadata {
 
 	private final Class<?> targetClass;
 
+	//当post-processor处理bean时，会解析bean class的所有属性
+	//在解析时会判断属性上是否有@Autowired和@Value
+	//有结果就解析这个属性值，将解析后的结果放到这个地方
+	//保存了被注入元素的全量集合
 	private final Collection<InjectedElement> injectedElements;
 
 	@Nullable
@@ -116,6 +120,7 @@ public class InjectionMetadata {
 				(checkedElements != null ? checkedElements : this.injectedElements);
 		if (!elementsToIterate.isEmpty()) {
 			for (InjectedElement element : elementsToIterate) {
+				//注入
 				element.inject(target, beanName, pvs);
 			}
 		}

@@ -111,9 +111,11 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	private final Map<String, Set<String>> containedBeanMap = new ConcurrentHashMap<>(16);
 
 	/** Map between dependent bean names: bean name to Set of dependent bean names. */
+	//当前bean依赖的bean的名称
 	private final Map<String, Set<String>> dependentBeanMap = new ConcurrentHashMap<>(64);
 
 	/** Map between depending bean names: bean name to Set of bean names for the bean's dependencies. */
+	//当前bean被哪些bean依赖
 	private final Map<String, Set<String>> dependenciesForBeanMap = new ConcurrentHashMap<>(64);
 
 
@@ -160,8 +162,11 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 		//将正在创建的Bean保存到第三季的缓存中，并且从二级缓存中移除。因为二级缓存中本来就没有，故可以认定为放入三级缓存
 		synchronized (this.singletonObjects) {
 			if (!this.singletonObjects.containsKey(beanName)) {
+				//添加进入三级缓存
 				this.singletonFactories.put(beanName, singletonFactory);
+				//清除此Bean在二级缓存中的缓存信息
 				this.earlySingletonObjects.remove(beanName);
+				//记录注册单例的顺序
 				this.registeredSingletons.add(beanName);
 			}
 		}
@@ -230,11 +235,13 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 */
 	public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
 		Assert.notNull(beanName, "Bean name must not be null");
+		//加锁，获取一级缓存中的bean
 		synchronized (this.singletonObjects) {
 			// 先试着从已经加载好的单实例Bean缓存区中获取是否有当前BeanName的Bean，显然没有
 			// 第一次进来的时候moneyService为空
 			Object singletonObject = this.singletonObjects.get(beanName);
 			if (singletonObject == null) {
+				//判断容器是否在销毁单例
 				if (this.singletonsCurrentlyInDestruction) {
 					throw new BeanCreationNotAllowedException(beanName,
 							"Singleton bean creation not allowed while singletons of this factory are in destruction " +
@@ -251,7 +258,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					this.suppressedExceptions = new LinkedHashSet<>();
 				}
 				try {
-					// 11.4 创建Bean
+					// 11.4 创建Bean， createBean()
 					singletonObject = singletonFactory.getObject();
 					newSingleton = true;
 				}
@@ -375,7 +382,10 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	protected void beforeSingletonCreation(String beanName) {
 		//这里的singletonsCurrentlyInCreation.add()就是为了解决循环依赖的问题
 		// 第一次进来moneyService会加入到singletonsCurrentlyInCreation里面
-		if (!this.inCreationCheckExclusions.contains(beanName) && !this.singletonsCurrentlyInCreation.add(beanName)) {
+		// 关键就是后面这个singletonsCurrentlyInCreation.add(beanName)
+		// 通常不应该有的情况，穿透了缓存。
+		if (!this.inCreationCheckExclusions.contains(beanName) &&
+				!this.singletonsCurrentlyInCreation.add(beanName)) {
 			throw new BeanCurrentlyInCreationException(beanName);
 		}
 	}
@@ -387,7 +397,9 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * @see #isSingletonCurrentlyInCreation
 	 */
 	protected void afterSingletonCreation(String beanName) {
-		if (!this.inCreationCheckExclusions.contains(beanName) && !this.singletonsCurrentlyInCreation.remove(beanName)) {
+		//删除正在创建的beanName
+		if (!this.inCreationCheckExclusions.contains(beanName) &&
+				!this.singletonsCurrentlyInCreation.remove(beanName)) {
 			throw new IllegalStateException("Singleton '" + beanName + "' isn't currently in creation");
 		}
 	}

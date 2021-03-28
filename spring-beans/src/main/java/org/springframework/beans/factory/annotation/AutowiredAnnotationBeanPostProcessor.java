@@ -253,6 +253,7 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 
 	@Override
 	public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
+		//寻找被标记的元素据
 		InjectionMetadata metadata = findAutowiringMetadata(beanName, beanType, null);
 		metadata.checkConfigMembers(beanDefinition);
 	}
@@ -404,8 +405,10 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 
 	@Override
 	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) {
+		//获取autowired和value注解的字段或方法
 		InjectionMetadata metadata = findAutowiringMetadata(beanName, bean.getClass(), pvs);
 		try {
+			//对Bean的属性进行注入
 			metadata.inject(bean, beanName, pvs);
 		}
 		catch (BeanCreationException ex) {
@@ -463,6 +466,8 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 						metadata.clear(pvs);
 					}
 					// 构建自动装配的信息
+					// 这个地方就是获取Autowired和Value标记的字段，放入集合中
+					// 伴随的注解还有require
 					metadata = buildAutowiringMetadata(clazz);
 					// 放入缓存
 					this.injectionMetadataCache.put(cacheKey, metadata);
@@ -488,13 +493,16 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 			ReflectionUtils.doWithLocalFields(targetClass, field -> {
 				MergedAnnotation<?> ann = findAutowiredAnnotation(field);
 				if (ann != null) {
+					//属性为static类型的
 					if (Modifier.isStatic(field.getModifiers())) {
 						if (logger.isInfoEnabled()) {
 							logger.info("Autowired annotation is not supported on static fields: " + field);
 						}
 						return;
 					}
+					//获取require属性
 					boolean required = determineRequiredStatus(ann);
+					//将当前字段元信息封装，添加在返回的集合中
 					currElements.add(new AutowiredFieldElement(field, required));
 				}
 			});
@@ -525,6 +533,7 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 				}
 			});
 
+			//将收集到的属性或者是方法存储到集合
 			elements.addAll(0, currElements);
 			targetClass = targetClass.getSuperclass();
 		}
@@ -658,6 +667,7 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 			}
 			if (value != null) {
 				ReflectionUtils.makeAccessible(field);
+				//这个地方对属性赋值
 				field.set(bean, value);
 			}
 		}
