@@ -310,3 +310,18 @@
 10:28:02.416 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
 10:28:02.416 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
 10:28:02.416 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+18:29:49.533 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+18:29:49.535 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+18:29:49.536 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+18:29:49.536 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+18:29:49.536 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+10:26:34.198 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:26:34.243 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+10:26:34.245 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+10:26:34.246 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+10:26:34.246 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!
+10:57:41.344 [main] INFO  o.i.service.order.OrderService - this is order service  construct
+10:57:41.348 [main] INFO  o.i.service.order.OrderService - this is order service ApplicationContextAware setApplicationContext function!
+10:57:41.348 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessBeforeInitialization!
+10:57:41.348 [main] INFO  o.i.service.order.OrderService - this is order service InitializingBean afterPropertiesSet function!
+10:57:41.348 [main] INFO  o.i.s.order.OrderServiceProcess - this is BeanPostProcessor postProcessAfterInitialization!

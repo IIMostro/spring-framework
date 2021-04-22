@@ -18,6 +18,8 @@ dependencies {
     compile(project(":spring-core"))
     compile(project(":spring-context"))
     compile(project(":spring-beans"))
+    compile(project(":spring-web"))
+    compile(project(":spring-webmvc"))
     implementation 'org.slf4j:slf4j-api:1.7.30'
     implementation 'ch.qos.logback:logback-classic:1.2.1'
     implementation 'ch.qos.logback:logback-core:1.2.1'
