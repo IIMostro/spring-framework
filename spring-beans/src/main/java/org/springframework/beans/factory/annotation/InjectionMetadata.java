@@ -119,8 +119,11 @@ public class InjectionMetadata {
 		Collection<InjectedElement> elementsToIterate =
 				(checkedElements != null ? checkedElements : this.injectedElements);
 		if (!elementsToIterate.isEmpty()) {
+			//elementsToIterate = [AutowiredFieldElement]
+			//elementsToIterate这里面就一个AutowiredFieldElement
 			for (InjectedElement element : elementsToIterate) {
-				//注入
+				//AutowiredFieldElement.inject 对字段的注入
+				//AutowiredMethodElement.inject 对方法的注入
 				element.inject(target, beanName, pvs);
 			}
 		}

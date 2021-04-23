@@ -1481,7 +1481,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			if (pvs == null) {
 				pvs = mbd.getPropertyValues();
 			}
-			//AutowiredAnnotationBeanPostProcessor.postProcessProperty()
+			// getBeanPostProcessorCache().instantiationAware里面有两个Process
+			//1.ImportAwareBeanPostProcessor
+			//2.AutowiredAnnotationBeanPostProcessor
+			//主要就是会执行AutowiredAnnotationBeanPostProcessor.postProcessProperties()
 			for (InstantiationAwareBeanPostProcessor bp : getBeanPostProcessorCache().instantiationAware) {
 				//这个地方会去解析@Autowired的以来，这时候如果有循环依赖就会在这个地方获取循环依赖的bean
 				PropertyValues pvsToUse = bp.postProcessProperties(pvs, bw.getWrappedInstance(), beanName);
