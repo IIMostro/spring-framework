@@ -312,6 +312,7 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 				if (candidateConstructors == null) {
 					Constructor<?>[] rawCandidates;
 					try {
+						//获取当前的一个构造方法
 						rawCandidates = beanClass.getDeclaredConstructors();
 					}
 					catch (Throwable ex) {
