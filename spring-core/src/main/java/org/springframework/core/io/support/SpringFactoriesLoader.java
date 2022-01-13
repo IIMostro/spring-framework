@@ -140,6 +140,7 @@ public final class SpringFactoriesLoader {
 
 		result = new HashMap<>();
 		try {
+			//就是这个地方去加载META-INF/spring.factories
 			Enumeration<URL> urls = classLoader.getResources(FACTORIES_RESOURCE_LOCATION);
 			while (urls.hasMoreElements()) {
 				URL url = urls.nextElement();
