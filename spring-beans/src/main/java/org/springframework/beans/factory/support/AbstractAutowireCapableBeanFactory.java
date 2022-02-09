@@ -626,6 +626,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 						"' to allow for resolving potential circular references");
 			}
 			//bean放入缓存。
+			//将正在创建的Bean保存到第三季的缓存中，并且从二级缓存中移除。因为二级缓存中本来就没有，故可以认定为放入三级缓存
 			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
 		}
 

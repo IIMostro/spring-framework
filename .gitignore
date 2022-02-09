@@ -46,3 +46,6 @@ atlassian-ide-plugin.xml
 .vscode/
 
 *.zip
+
+log/
+*.log

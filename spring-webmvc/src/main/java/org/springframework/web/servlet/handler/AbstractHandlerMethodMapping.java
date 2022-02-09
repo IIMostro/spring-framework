@@ -370,10 +370,14 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	 */
 	@Override
 	protected HandlerMethod getHandlerInternal(HttpServletRequest request) throws Exception {
+		//获取需要搜索的url
 		String lookupPath = initLookupPath(request);
+		//加锁
 		this.mappingRegistry.acquireReadLock();
 		try {
+			//5.2.1.1 搜索处理器方法（真正处理请求的RequestMapping）
 			HandlerMethod handlerMethod = lookupHandlerMethod(lookupPath, request);
+			//5.2.1.2 将方法分离出来，单独形成一个bean
 			return (handlerMethod != null ? handlerMethod.createWithResolvedBean() : null);
 		}
 		finally {
@@ -393,6 +397,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	@Nullable
 	protected HandlerMethod lookupHandlerMethod(String lookupPath, HttpServletRequest request) throws Exception {
 		List<Match> matches = new ArrayList<>();
+		//根据uri获取对应的RequestMapping信息(T的类型为RequestMappingInfo)
 		List<T> directPathMatches = this.mappingRegistry.getMappingsByDirectPath(lookupPath);
 		if (directPathMatches != null) {
 			addMatchingMappings(directPathMatches, matches, request);
@@ -400,6 +405,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 		if (matches.isEmpty()) {
 			addMatchingMappings(this.mappingRegistry.getRegistrations().keySet(), matches, request);
 		}
+		//排序找到最合适的uri
 		if (!matches.isEmpty()) {
 			Match bestMatch = matches.get(0);
 			if (matches.size() > 1) {

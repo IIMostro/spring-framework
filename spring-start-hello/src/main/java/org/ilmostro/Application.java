@@ -1,6 +1,7 @@
 package org.ilmostro;
 
 import org.ilmostro.configuration.ApplicationConfiguration;
+import org.ilmostro.lifecycle.ObjectMapperUtils;
 import org.ilmostro.service.order.OrderService;
 import org.ilmostro.entity.User;
 import org.springframework.context.ApplicationContext;
@@ -19,7 +20,9 @@ public class Application {
 		  @see org.springframework.context.annotation.ConfigurationClassParser
 		 */
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-		OrderService bean = applicationContext.getBean(OrderService.class);
-		User bean1 = applicationContext.getBean(User.class);
+//		OrderService bean = applicationContext.getBean(OrderService.class);
+//		User bean1 = applicationContext.getBean(User.class);
+//		ObjectMapperUtils utils = applicationContext.getBean(ObjectMapperUtils.class);
+//		utils.say();
 	}
 }

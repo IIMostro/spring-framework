@@ -870,6 +870,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 
 	/**
 	 * Override the parent class implementation in order to intercept PATCH requests.
+	 * @see javax.servlet.Servlet#service
 	 */
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -991,15 +992,19 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 		long startTime = System.currentTimeMillis();
 		Throwable failureCause = null;
 
+		//3.1 获得当前线程的上下文
 		LocaleContext previousLocaleContext = LocaleContextHolder.getLocaleContext();
 		LocaleContext localeContext = buildLocaleContext(request);
 
+		//3.2 获取RequestAttributes
 		RequestAttributes previousAttributes = RequestContextHolder.getRequestAttributes();
 		ServletRequestAttributes requestAttributes = buildRequestAttributes(request, response, previousAttributes);
 
+		//异步支持
 		WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
 		asyncManager.registerCallableInterceptor(FrameworkServlet.class.getName(), new RequestBindingInterceptor());
 
+		//3.3 线程隔离并且将上下文设置到当前线程中
 		initContextHolders(request, localeContext, requestAttributes);
 
 		try {
@@ -1015,6 +1020,8 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 		}
 
 		finally {
+			//会在这个地方销毁ThreadLocal中的数据
+			//threadContextInheritable判断这个是否可以子线程继承
 			resetContextHolders(request, previousLocaleContext, previousAttributes);
 			if (requestAttributes != null) {
 				requestAttributes.requestCompleted();
