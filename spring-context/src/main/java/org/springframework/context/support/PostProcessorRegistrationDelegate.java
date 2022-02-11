@@ -267,7 +267,9 @@ final class PostProcessorRegistrationDelegate {
 					internalPostProcessors.add(pp);
 				}
 			}
+			//Aop的 AnnotationAwareAspectJAutoProxyCreator集成了Ordered接口，会在这个地方加入到orderPostProcessorName里面
 			else if (beanFactory.isTypeMatch(ppName, Ordered.class)) {
+				// org.springframework.aop.config.internalAutoProxyCreator
 				orderedPostProcessorNames.add(ppName);
 			}
 			else {

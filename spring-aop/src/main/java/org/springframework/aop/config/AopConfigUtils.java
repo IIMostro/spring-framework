@@ -131,7 +131,7 @@ public abstract class AopConfigUtils {
 			}
 			return null;
 		}
-
+		//这个地方的动态注册可以学习一下
 		RootBeanDefinition beanDefinition = new RootBeanDefinition(cls);
 		beanDefinition.setSource(source);
 		beanDefinition.getPropertyValues().add("order", Ordered.HIGHEST_PRECEDENCE);

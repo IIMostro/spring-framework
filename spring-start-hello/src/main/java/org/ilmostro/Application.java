@@ -1,9 +1,7 @@
 package org.ilmostro;
 
 import org.ilmostro.configuration.ApplicationConfiguration;
-import org.ilmostro.lifecycle.ObjectMapperUtils;
-import org.ilmostro.service.order.OrderService;
-import org.ilmostro.entity.User;
+import org.ilmostro.service.aspect.SimpleAspectService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -20,6 +18,8 @@ public class Application {
 		  @see org.springframework.context.annotation.ConfigurationClassParser
 		 */
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+		SimpleAspectService service = applicationContext.getBean(SimpleAspectService.class);
+		service.say();
 //		OrderService bean = applicationContext.getBean(OrderService.class);
 //		User bean1 = applicationContext.getBean(User.class);
 //		ObjectMapperUtils utils = applicationContext.getBean(ObjectMapperUtils.class);
