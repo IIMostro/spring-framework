@@ -1,10 +1,8 @@
 package org.ilmostro.configuration;
 
 import org.ilmostro.service.circular.UserService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.*;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author li.bowei
@@ -12,6 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration
 @ComponentScan("org.ilmostro")
 @EnableAspectJAutoProxy
+@EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 public class ApplicationConfiguration {
 
 	@Bean

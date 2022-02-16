@@ -51,6 +51,7 @@ public class SpringTransactionAnnotationParser implements TransactionAnnotationP
 	@Override
 	@Nullable
 	public TransactionAttribute parseTransactionAnnotation(AnnotatedElement element) {
+		//搜索@Transaction注解
 		AnnotationAttributes attributes = AnnotatedElementUtils.findMergedAnnotationAttributes(
 				element, Transactional.class, false, false);
 		if (attributes != null) {
@@ -68,28 +69,34 @@ public class SpringTransactionAnnotationParser implements TransactionAnnotationP
 	protected TransactionAttribute parseTransactionAnnotation(AnnotationAttributes attributes) {
 		RuleBasedTransactionAttribute rbta = new RuleBasedTransactionAttribute();
 
+		//解析事务传播行为
 		Propagation propagation = attributes.getEnum("propagation");
 		rbta.setPropagationBehavior(propagation.value());
+		//隔离级别
 		Isolation isolation = attributes.getEnum("isolation");
 		rbta.setIsolationLevel(isolation.value());
 
 		rbta.setTimeout(attributes.getNumber("timeout").intValue());
+		//超时
 		String timeoutString = attributes.getString("timeoutString");
 		Assert.isTrue(!StringUtils.hasText(timeoutString) || rbta.getTimeout() < 0,
 				"Specify 'timeout' or 'timeoutString', not both");
 		rbta.setTimeoutString(timeoutString);
 
+		//只读
 		rbta.setReadOnly(attributes.getBoolean("readOnly"));
 		rbta.setQualifier(attributes.getString("value"));
 		rbta.setLabels(Arrays.asList(attributes.getStringArray("label")));
 
 		List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
+		//异常回滚Exception
 		for (Class<?> rbRule : attributes.getClassArray("rollbackFor")) {
 			rollbackRules.add(new RollbackRuleAttribute(rbRule));
 		}
 		for (String rbRule : attributes.getStringArray("rollbackForClassName")) {
 			rollbackRules.add(new RollbackRuleAttribute(rbRule));
 		}
+		//异常白名单
 		for (Class<?> rbRule : attributes.getClassArray("noRollbackFor")) {
 			rollbackRules.add(new NoRollbackRuleAttribute(rbRule));
 		}
