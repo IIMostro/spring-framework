@@ -50,6 +50,9 @@ import org.springframework.lang.Nullable;
  * selection of imports until all {@code @Configuration} classes have been processed
  * (see {@link DeferredImportSelector} for details).
  *
+ *
+ * 这个类的实现类不会将实现类注入到IOC只会将selectImports注入
+ *
  * @author Chris Beams
  * @author Juergen Hoeller
  * @since 3.1

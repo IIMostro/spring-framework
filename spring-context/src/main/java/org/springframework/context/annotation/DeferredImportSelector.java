@@ -31,6 +31,8 @@ import org.springframework.lang.Nullable;
  * <p>Implementations may also provide an {@link #getImportGroup() import group} which
  * can provide additional sorting and filtering logic across different selectors.
  *
+ * 这个实现类比ImportSelector晚
+ *
  * @author Phillip Webb
  * @author Stephane Nicoll
  * @since 4.0
