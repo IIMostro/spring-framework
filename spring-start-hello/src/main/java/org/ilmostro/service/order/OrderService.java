@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @author li.bowei
  **/
@@ -16,8 +18,12 @@ public class OrderService implements ApplicationContextAware, InitializingBean {
 
 	private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
+	static{
+		logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<<static method");
+	}
+
 	public OrderService() {
-		logger.info("this is order service  construct");
+		logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<<OrderService()");
 	}
 
 	/**
@@ -27,18 +33,18 @@ public class OrderService implements ApplicationContextAware, InitializingBean {
 	 * @see org.springframework.beans.factory.config.BeanPostProcessor
 	 * @see org.springframework.beans.factory.InitializingBean
 	 */
-//	@PostConstruct
+	@PostConstruct
 	public void init() {
-		logger.info("this is order service post construct");
+		logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<<@PostConstruct");
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		logger.info("this is order service InitializingBean afterPropertiesSet function!");
+		logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<< InitializingBean.afterPropertiesSet()");
 	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		logger.info("this is order service ApplicationContextAware setApplicationContext function!");
+		logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<<ApplicationContextAware.applicationContext()");
 	}
 }

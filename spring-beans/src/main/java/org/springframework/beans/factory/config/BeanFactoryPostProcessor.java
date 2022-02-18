@@ -70,6 +70,12 @@ public interface BeanFactoryPostProcessor {
 	 *
 	 * 在应用程序上下文的标准初始化之后修改其内部bean工厂.
 	 * 所有bean定义都已经加载，但是还没有实例化bean。这允许覆盖或添加属性，甚至可以初始化bean.
+	 *
+	 * 说明：
+	 *     该接口方法是在Spring容器解析完配置文件注册了BeanDefinition之后，并在bean被实例化之前被调用的；
+	 *     该接口方法定义在spring-bean模块中，但是并没有在IOC层被使用（如果要使用可以手动向BeanFactory注入该处理器），而是
+	 *     在ApplicationContext层被调用，这意味着该处理器是用于在ApplicationContext层拓展而被定义的。
+	 *
 	 * 
 	 * @param beanFactory the bean factory used by the application context
 	 * @throws org.springframework.beans.BeansException in case of errors

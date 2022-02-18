@@ -547,11 +547,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			StartupStep contextRefresh = this.applicationStartup.start("spring.context.refresh");
 
 			// Prepare this context for refreshing.
-			// 1.初始化之前的预处理,初始化
+			// 1.初始化之前的预处理,初始化,加载属性
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
 			// 2. 获取BeanFactory，加载所有bean的定义信息（未实例化）
+			// ------------------2022年2月18日11:09:01-----------------------
+			// 这个地方如果是AnnotationConfigApplicationContext则设置一个id就完事
+			// 但是这个地方如果是XML配置的则会新建一个beanFactory并且会去解析xml里面定义的bean
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -561,11 +564,13 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
 				// 4. 准备BeanFactory完成后进行的后置处理,钩子方法
+				// 在Web环境中在这里进行的包扫描
+				// AnnotationConfigServletWebServerApplicationContext
 				postProcessBeanFactory(beanFactory);
 
 				StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
 				// Invoke factory processors registered as beans in the context.
-				// 5. 执行BeanFactory创建后的后置处理器, 解析
+				// 5. 执行BeanFactory创建后的后置处理器, 通过CongigurationClassPostProcessor解析@Configuration
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
@@ -647,6 +652,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// Initialize any placeholder property sources in the context environment.
 		//1.1初始化属性配置
+		// WebApplicationContextUtils.initServletPropertySources(getPropertySources(), servletContext, servletConfig);最终这个地方使用到了
+		// 类似加载web.xml进入到ioc
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable:
@@ -687,7 +694,12 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * @see #getBeanFactory()
 	 */
 	protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
-		//2.1 刷新BeanFactory
+		//2.1 刷新BeanFactory,
+		// 这个地方是使用
+		// 		GenericApplicationContext.refreshBeanFactory
+		// 		AbstractRefreshableApplicationContext.refreshBeanFactory
+		// 关键要看使用的那个实现类, 如果使用的是AnnotationConfigApplicationContext则使用GenericApplicationContext
+		// 如果是ClassPathXmlApplicationContext则使用AbstractRefreshableApplicationContext.refreshBeanFactory
 		refreshBeanFactory();
 		return getBeanFactory();
 	}
@@ -709,6 +721,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// Configure the bean factory with context callbacks.
 		// 3.1 配置一个可回调注入ApplicationContext的BeanPostProcessor
 		// 当Bean实现了ApplicationContextAware的时候会注入ApplicationContext
+		// -------------2022年2月18日11:29:18-------------
+		// 通过BeanPostProcessor来实现各种XXXAware的属性注入，其中就包括了常常使用的ApplicationContextAware注入
 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
 		//这几个ignoreDependencyInterface 意思就是不要自动装载
 		//例如OrderService实现了ApplicationContextAware,
@@ -726,13 +740,17 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// MessageSource registered (and found for autowiring) as a bean.
 
 		// 3.2 自动注入的支持
+		// 注入一些特特殊的ioc容器
 		beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);
 		beanFactory.registerResolvableDependency(ResourceLoader.class, this);
 		beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);
 		beanFactory.registerResolvableDependency(ApplicationContext.class, this);
 
 		// Register early post-processor for detecting inner beans as ApplicationListeners.
-		//收集ApplicationListener
+		//在postProcessAfterInitialization阶段收集ApplicationListener
+		// 这个Processor还实现了
+		// 		DestructionAwareBeanPostProcessor 注销的时候删除初始化数据
+		// 		MergedBeanDefinitionPostProcessor 在merge阶段添加到singleNames里面
 		beanFactory.addBeanPostProcessor(new ApplicationListenerDetector(this));
 
 		// Detect a LoadTimeWeaver and prepare for weaving, if found.
@@ -776,7 +794,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
 
-		//5.1 执行BeanFactory后置处理器
+		// 5.1 执行BeanFactoryPostProcessors.postProcessBeanFactory()
+		// 这个时候的时机为： 所有的 BeanDefinition 已经被加载，但没有Bean被实例化。
 		PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());
 
 		// Detect a LoadTimeWeaver and prepare for weaving, if found in the meantime

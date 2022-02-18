@@ -33,6 +33,9 @@ import org.springframework.web.context.ServletContextAware;
  * <p>Web application contexts will automatically register this with their
  * underlying bean factory. Applications do not use this directly.
  *
+ * 可以在初始化 ServletContext 或 ServletConfig 之前进行处理器注册时使用
+ *
+ *
  * @author Juergen Hoeller
  * @author Phillip Webb
  * @since 12.03.2004
@@ -104,6 +107,8 @@ public class ServletContextAwareProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+
+		//这里就是关键，注入servlet context和servlet config。应用拓展不应该使用这个
 		if (getServletContext() != null && bean instanceof ServletContextAware) {
 			((ServletContextAware) bean).setServletContext(getServletContext());
 		}

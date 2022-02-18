@@ -89,6 +89,8 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 	@Override
 	@Nullable
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+
+		//如果不是需要初始的这些XXXAware则不需要通过这个PostProcess
 		if (!(bean instanceof EnvironmentAware || bean instanceof EmbeddedValueResolverAware ||
 				bean instanceof ResourceLoaderAware || bean instanceof ApplicationEventPublisherAware ||
 				bean instanceof MessageSourceAware || bean instanceof ApplicationContextAware ||
@@ -98,6 +100,7 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 
 		AccessControlContext acc = null;
 
+		//文件的权限控制，防止恶意代码
 		if (System.getSecurityManager() != null) {
 			acc = this.applicationContext.getBeanFactory().getAccessControlContext();
 		}
@@ -109,6 +112,7 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 			}, acc);
 		}
 		else {
+			//挨个注入
 			invokeAwareInterfaces(bean);
 		}
 

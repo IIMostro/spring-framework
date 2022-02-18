@@ -17,7 +17,7 @@ public class OrderServiceProcess implements BeanPostProcessor {
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		if(bean instanceof OrderService){
-			logger.info("this is BeanPostProcessor postProcessBeforeInitialization!");
+			logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<<BeanPostProcessor.postProcessBeforeInitialization!");
 		}
 		return bean;
 	}
@@ -25,7 +25,7 @@ public class OrderServiceProcess implements BeanPostProcessor {
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		if(bean instanceof OrderService){
-			logger.info("this is BeanPostProcessor postProcessAfterInitialization!");
+			logger.info(">>>>>>>>>>>>>>>>>[OrderService]<<<<<<<<<<<<<<<<BeanPostProcessor.postProcessAfterInitialization!");
 		}
 		return bean;
 	}

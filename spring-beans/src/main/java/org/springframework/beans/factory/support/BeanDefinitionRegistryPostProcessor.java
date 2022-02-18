@@ -42,6 +42,8 @@ public interface BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProc
 	 * 所有常规bean定义都已加载，但还没有实例化bean。
 	 * 这允许在下一个后期处理阶段开始之前添加进一步的bean定义。
 	 *
+	 * MyBatis的@Mapper就是基于这个注解实现的包扫描
+	 *
 	 * @param registry the bean definition registry used by the application context
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 */
