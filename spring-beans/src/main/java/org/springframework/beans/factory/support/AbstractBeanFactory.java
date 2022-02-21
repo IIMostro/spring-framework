@@ -310,6 +310,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 			// 11.2.4 走到这个地方，证明Bean确实要被创建了，标记Bean被创建
 			// 该设计是防止多线程同时到这里，引发多次创建的问题
+			// 里面用到的就是双重检索防止多线程创建的问题
 			if (!typeCheckOnly) {
 				markBeanAsCreated(beanName);
 			}
@@ -1189,6 +1190,8 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @param beanName the name of the bean
 	 */
 	protected boolean isPrototypeCurrentlyInCreation(String beanName) {
+
+		// 获取当前正在创建bean中是否存在有beanName，如果名字一样的话则判断产生了循环依赖
 		Object curVal = this.prototypesCurrentlyInCreation.get();
 		return (curVal != null &&
 				(curVal.equals(beanName) || (curVal instanceof Set && ((Set<?>) curVal).contains(beanName))));
@@ -1805,6 +1808,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @param beanName the name of the bean
 	 */
 	protected void markBeanAsCreated(String beanName) {
+		//双重检索
 		if (!this.alreadyCreated.contains(beanName)) {
 			synchronized (this.mergedBeanDefinitions) {
 				if (!this.alreadyCreated.contains(beanName)) {

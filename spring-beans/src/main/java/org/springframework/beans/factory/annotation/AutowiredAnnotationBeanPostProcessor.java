@@ -675,6 +675,8 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 
 		@Nullable
 		private Object resolveFieldValue(Field field, Object bean, @Nullable String beanName) {
+
+			//这个地方就是没有缓存
 			DependencyDescriptor desc = new DependencyDescriptor(field, this.required);
 			desc.setContainingClass(bean.getClass());
 			Set<String> autowiredBeanNames = new LinkedHashSet<>(1);
@@ -683,16 +685,19 @@ public class AutowiredAnnotationBeanPostProcessor implements SmartInstantiationA
 			Object value;
 			try {
 				//beanFactory = DefaultListableBeanFactory
+				// 关联创建
 				value = beanFactory.resolveDependency(desc, beanName, autowiredBeanNames, typeConverter);
 			}
 			catch (BeansException ex) {
 				throw new UnsatisfiedDependencyException(null, beanName, new InjectionPoint(field), ex);
 			}
 			synchronized (this) {
+				//缓存这个属性
 				if (!this.cached) {
 					Object cachedFieldValue = null;
 					if (value != null || this.required) {
 						cachedFieldValue = desc;
+						//添加依赖关系
 						registerDependentBeans(beanName, autowiredBeanNames);
 						if (autowiredBeanNames.size() == 1) {
 							String autowiredBeanName = autowiredBeanNames.iterator().next();

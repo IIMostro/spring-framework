@@ -574,12 +574,13 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
-				// 6. 注册Bean的后置处理器，获取一些@Autowaire之类的自动注入
+				// 6. 注册BeanPostProcessors的后置处理器，获取一些@Autowaire之类的自动注入
+				// 将BeanFactory分类
 				registerBeanPostProcessors(beanFactory);
 				beanPostProcess.end();
 
 				// Initialize message source for this context.
-				// 7. 初始化MessageSource
+				// 7. 初始化MessageSource, 国际化的一些东西
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
@@ -587,14 +588,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
-				// 9. 子类的多态onRefresh
+				// 9. 子类的多态onRefresh，在Springboot中有重写，
 				onRefresh();
 
 				// Check for listener beans and register them.
 				// 10. 注册监听器
 				registerListeners();
 
-				//至此为止，BeanFactory创建完毕
+				//至此为止，BeanFactory创建完毕 ?
 
 				// Instantiate all remaining (non-lazy-init) singletons.
 				// 11. 初始化所有剩下的单例Bean
@@ -858,6 +859,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void initApplicationEventMulticaster() {
 		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
+		// 初始化当前ApplicationContext的事件广播器
 		if (beanFactory.containsLocalBean(APPLICATION_EVENT_MULTICASTER_BEAN_NAME)) {
 			this.applicationEventMulticaster =
 					beanFactory.getBean(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, ApplicationEventMulticaster.class);
@@ -918,12 +920,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void registerListeners() {
 		// Register statically specified listeners first.
+		// 把监听器添加到之前初始化出来的事件派发器
 		for (ApplicationListener<?> listener : getApplicationListeners()) {
 			getApplicationEventMulticaster().addApplicationListener(listener);
 		}
 
 		// Do not initialize FactoryBeans here: We need to leave all regular beans
 		// uninitialized to let post-processors apply to them!
+		// 添加BeanFactory中定义的ApplicationListener到事件派发中
 		String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, true, false);
 		for (String listenerBeanName : listenerBeanNames) {
 			getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);

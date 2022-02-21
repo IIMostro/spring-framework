@@ -946,6 +946,9 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		// Iterate over a copy to allow for init methods which in turn register new bean definitions.
 		// While this may not be part of the regular factory bootstrap, it does otherwise work fine.
 		// 拿到了所有的Bean定义信息，这些信息已经在前面的步骤中都准备完毕了
+		// 这里的beanDefinitionNames是在初始化 AnnotationConfigApplicationContext() -> AnnotatedBeanDefinitionReader() ->
+		// registerAnnotationConfigProcessors() -> registerPostProcessor() -> registerBeanDefinition()
+		// 的过程中扫描到的beanDefinition
 		List<String> beanNames = new ArrayList<>(this.beanDefinitionNames);
 
 		// Trigger initialization of all non-lazy singleton beans...
@@ -1066,6 +1069,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			} else {
 				// Still in startup registration phase
 				this.beanDefinitionMap.put(beanName, beanDefinition);
+				// // 就是这个地方会往beanDefinitionNames里面添加扫描到的bean definition
 				this.beanDefinitionNames.add(beanName);
 				removeManualSingletonName(beanName);
 			}
