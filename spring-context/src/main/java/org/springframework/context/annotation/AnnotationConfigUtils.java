@@ -160,6 +160,8 @@ public abstract class AnnotationConfigUtils {
 
 		Set<BeanDefinitionHolder> beanDefs = new LinkedHashSet<>(8);
 
+		// 就是这个地方注册了 ConfigurationClassPostProcessor, AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME
+		// 之后会在 AbstractApplicationContext#refresh registerBeanPostProcessors时候去解析这里加载的BeanPostProcess
 		if (!registry.containsBeanDefinition(CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME)) {
 			RootBeanDefinition def = new RootBeanDefinition(ConfigurationClassPostProcessor.class);
 			def.setSource(source);

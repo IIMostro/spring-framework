@@ -177,6 +177,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 		String[] beanNames = obtainApplicationContext().getBeanNamesForType(Object.class);
 
 		for (String beanName : beanNames) {
+			// 将不是scopedTarget开头的bean执行一遍
 			if (!beanName.startsWith(SCOPED_TARGET_NAME_PREFIX)) {
 				Class<?> beanType = null;
 				try {
@@ -188,6 +189,11 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 						logger.trace("Could not resolve type for bean '" + beanName + "'", ex);
 					}
 				}
+				// isHandler会去解析@Controller和@RequestMapping
+				/*
+					return (AnnotatedElementUtils.hasAnnotation(beanType, Controller.class) ||
+						AnnotatedElementUtils.hasAnnotation(beanType, RequestMapping.class));
+				 */
 				if (beanType != null && isHandler(beanType)) {
 					detectHandlerMethods(beanName);
 				}
@@ -206,6 +212,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 		if (handlerType != null) {
 			final Class<?> userType = ClassUtils.getUserClass(handlerType);
+			// 解析筛选方法
 			Map<Method, T> methods = MethodIntrospector.selectMethods(userType,
 					(MethodIntrospector.MetadataLookup<T>) method -> getMappingForMethod(method, userType));
 			if (logger.isTraceEnabled()) {
@@ -214,6 +221,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 			else if (mappingsLogger.isDebugEnabled()) {
 				mappingsLogger.debug(formatMappings(userType, methods));
 			}
+			// 注册方法映射
 			methods.forEach((method, mapping) -> {
 				Method invocableMethod = AopUtils.selectInvocableMethod(method, userType);
 				registerHandlerMethod(handler, invocableMethod, mapping);
