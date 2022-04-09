@@ -515,6 +515,10 @@ public class WebMvcConfigurationSupport implements ApplicationContextAware, Serv
 	}
 
 	/**
+	 *
+	 * 通过Bean Name作为映射地址
+	 *
+	 *
 	 * Return a {@link BeanNameUrlHandlerMapping} ordered at 2 to map URL
 	 * paths to controller bean names.
 	 */
