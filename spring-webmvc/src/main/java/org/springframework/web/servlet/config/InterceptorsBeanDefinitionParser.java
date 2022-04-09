@@ -70,8 +70,11 @@ class InterceptorsBeanDefinitionParser implements BeanDefinitionParser {
 			else {
 				interceptorBean = context.getDelegate().parsePropertySubElement(interceptor, null);
 			}
+			// 设置需要过滤的路径
 			mappedInterceptorDef.getConstructorArgumentValues().addIndexedArgumentValue(0, includePatterns);
+			// 设置不需要过滤的路径
 			mappedInterceptorDef.getConstructorArgumentValues().addIndexedArgumentValue(1, excludePatterns);
+			// 设置BeanDefinitionHolderBeanDefinitionHolder
 			mappedInterceptorDef.getConstructorArgumentValues().addIndexedArgumentValue(2, interceptorBean);
 
 			if (pathMatcherRef != null) {
@@ -79,6 +82,7 @@ class InterceptorsBeanDefinitionParser implements BeanDefinitionParser {
 			}
 
 			String beanName = context.getReaderContext().registerWithGeneratedName(mappedInterceptorDef);
+			// 在这个地方注册多个 MappedInterceptor
 			context.registerComponent(new BeanComponentDefinition(mappedInterceptorDef, beanName));
 		}
 

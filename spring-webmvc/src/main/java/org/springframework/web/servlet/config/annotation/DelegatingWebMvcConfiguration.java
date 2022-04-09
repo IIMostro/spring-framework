@@ -47,6 +47,7 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
 
 	@Autowired(required = false)
 	public void setConfigurers(List<WebMvcConfigurer> configurers) {
+		// 如果有用户自定义实现的configurers则在这里假如到容器
 		if (!CollectionUtils.isEmpty(configurers)) {
 			this.configurers.addWebMvcConfigurers(configurers);
 		}

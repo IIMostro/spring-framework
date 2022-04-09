@@ -131,6 +131,7 @@ public class DefaultNamespaceHandlerResolver implements NamespaceHandlerResolver
 					throw new FatalBeanException("Class [" + className + "] for namespace [" + namespaceUri +
 							"] does not implement the [" + NamespaceHandler.class.getName() + "] interface");
 				}
+				// 还得是这个地方啊。这个地方会根据handlerClass, 其实也是根据xsd的标签解析出来的NamespaceHandler
 				NamespaceHandler namespaceHandler = (NamespaceHandler) BeanUtils.instantiateClass(handlerClass);
 				namespaceHandler.init();
 				handlerMappings.put(namespaceUri, namespaceHandler);

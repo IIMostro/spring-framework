@@ -31,8 +31,12 @@ public class MvcNamespaceHandler extends NamespaceHandlerSupport {
 
 	@Override
 	public void init() {
+
+		// 这个地方来设置 MVC各个标签的解析类
+		// RequestMappingHandlerMapping
 		registerBeanDefinitionParser("annotation-driven", new AnnotationDrivenBeanDefinitionParser());
 		registerBeanDefinitionParser("default-servlet-handler", new DefaultServletHandlerBeanDefinitionParser());
+		// 设置拦截器的标签解析类
 		registerBeanDefinitionParser("interceptors", new InterceptorsBeanDefinitionParser());
 		registerBeanDefinitionParser("resources", new ResourcesBeanDefinitionParser());
 		registerBeanDefinitionParser("view-controller", new ViewControllerBeanDefinitionParser());

@@ -616,12 +616,16 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 				(HandlerExecutionChain) handler : new HandlerExecutionChain(handler));
 
 		for (HandlerInterceptor interceptor : this.adaptedInterceptors) {
+			// 所以这个地方就是会区分出是xml解析出来的 RequestMappingHandlerMapping还是配置类里面的HandlerMapping
 			if (interceptor instanceof MappedInterceptor) {
 				MappedInterceptor mappedInterceptor = (MappedInterceptor) interceptor;
+				// 在InterceptorsBeanDefinitionParser中解析会为每一个xml中配置的interceptor
+				// 创建一个MappedInterceptor
 				if (mappedInterceptor.matches(request)) {
 					chain.addInterceptor(mappedInterceptor.getInterceptor());
 				}
 			}
+			// 这个地方就是根据
 			else {
 				chain.addInterceptor(interceptor);
 			}
