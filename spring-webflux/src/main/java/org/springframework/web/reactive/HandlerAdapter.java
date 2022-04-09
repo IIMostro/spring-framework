@@ -49,6 +49,9 @@ public interface HandlerAdapter {
 	 * {@link HandlerResult#setExceptionHandler(Function) set an exception
 	 * handler} on the {@code HandlerResult} so that may also be applied later
 	 * after result handling.
+	 *
+	 * 执行Handler， 无需关注Handler的实现细节
+	 *
 	 * @param exchange current server exchange
 	 * @param handler the selected handler which must have been previously
 	 * checked via {@link #supports(Object)}

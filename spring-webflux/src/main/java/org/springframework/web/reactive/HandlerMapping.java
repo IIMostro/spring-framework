@@ -91,6 +91,9 @@ public interface HandlerMapping {
 	 * based on it, and update the response accordingly. For pre-flight requests,
 	 * the same should be done based on the handler matching to the expected
 	 * actual request.
+	 *
+	 * 映射请求（Request）到处理器 Handler 加上其关联的拦截器列表
+	 *
 	 * @param exchange current server exchange
 	 * @return a {@link Mono} that emits one value or none in case the request
 	 * cannot be resolved to a handler

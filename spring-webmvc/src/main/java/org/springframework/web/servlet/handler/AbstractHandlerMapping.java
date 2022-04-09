@@ -376,6 +376,13 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 	 */
 	@Override
 	protected void initApplicationContext() throws BeansException {
+
+		// 这个地方会初始化 this.interceptors
+		// spring-mvc.xml配置RequestMappingHandlerMapping
+		// RequestMappingHandlerMapping继承了ApplicationObjectSupport
+		// 在初始化过程中会调用 #setApplicationContext()
+		// 然后就走到了这个地方。
+
 		extendInterceptors(this.interceptors);
 		detectMappedInterceptors(this.adaptedInterceptors);
 		initInterceptors();

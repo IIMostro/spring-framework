@@ -603,6 +603,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
+				// SpringMVC中是在此处初始化Handler的
 				finishRefresh();
 			}
 
@@ -1005,6 +1006,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		getLifecycleProcessor().onRefresh();
 
 		// Publish the final event.
+		// 这里 FrameworkServlet监听了事件，在onRefresh中初始化了MVC组件，包括了HandlerMapping, HandlerAdapter等
 		publishEvent(new ContextRefreshedEvent(this));
 
 		// Participate in LiveBeansView MBean, if active.
