@@ -103,6 +103,8 @@ import org.springframework.util.ReflectionUtils;
  * See {@link WebApplicationInitializer} Javadoc for examples and detailed usage
  * recommendations.<p>
  *
+ * 首先关注HandlesTypes，这个其实就解释了SpringServletContainerInitializer这个类是Spring的一个包装类
+ *
  * @author Chris Beams
  * @author Juergen Hoeller
  * @author Rossen Stoyanchev
@@ -143,6 +145,11 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 	public void onStartup(@Nullable Set<Class<?>> webAppInitializerClasses, ServletContext servletContext)
 			throws ServletException {
 
+		// WebApplicationInitializer这四个的抽象类
+		// class org.springframework.web.servlet.support.AbstractDispatcherServletInitializer
+		// class org.springframework.web.context.AbstractContextLoaderInitializer
+		// class org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer
+		// class org.springframework.web.server.adapter.AbstractReactiveWebInitializer
 		List<WebApplicationInitializer> initializers = Collections.emptyList();
 
 		if (webAppInitializerClasses != null) {

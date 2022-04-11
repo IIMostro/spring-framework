@@ -167,6 +167,9 @@ import javax.servlet.ServletException;
  * 7.0.15 fixes this issue. Overriding the "/" servlet mapping has also been tested
  * successfully under GlassFish 3.1.<p>
  *
+ *
+ * Spring提供的SPI接口
+ *
  * @author Chris Beams
  * @since 3.1
  * @see SpringServletContainerInitializer
