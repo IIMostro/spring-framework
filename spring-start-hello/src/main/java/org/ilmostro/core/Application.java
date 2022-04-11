@@ -1,8 +1,16 @@
 package org.ilmostro.core;
 
+
+
+import java.util.Map;
+
 import org.ilmostro.core.configuration.ApplicationConfiguration;
+import org.ilmostro.core.imported.Color;
 import org.ilmostro.core.service.aspect.SimpleAspectService;
 import org.ilmostro.core.service.transaction.DemoTransactionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,6 +18,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @author li.bowei
  **/
 public class Application {
+
+	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
 //		ApplicationContext applicationContext = new AnnotationConfigApplicationContext("org.ilmostro");
@@ -28,5 +38,11 @@ public class Application {
 //		User bean1 = applicationContext.getBean(User.class);
 //		ObjectMapperUtils utils = applicationContext.getBean(ObjectMapperUtils.class);
 //		utils.say();
+		imported(applicationContext);
+	}
+
+	public static void imported(ApplicationContext context){
+		Map<String, Color> colorMap = context.getBeansOfType(Color.class);
+		colorMap.forEach((key, value) -> logger.info("beanName:{}, witch:{}", key, value.witch()));
 	}
 }
