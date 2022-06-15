@@ -565,7 +565,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// Allows post-processing of the bean factory in context subclasses.
 				// 4. 准备BeanFactory完成后进行的后置处理,钩子方法
 				// 在Web环境中在这里进行的包扫描
-				// AnnotationConfigServletWebServerApplicationContext
+				// AnnotationConfigServlet WebServerApplicationContext
 				postProcessBeanFactory(beanFactory);
 
 				StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
